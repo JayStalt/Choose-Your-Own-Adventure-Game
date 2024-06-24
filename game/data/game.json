@@ -1,0 +1,444 @@
+{
+  "start_state": "start",
+
+  "states": {
+
+    "start": {
+      "text": "You are a seasoned adventurer hungry for new challenges. A weathered quest board beckons nearby, filled with promises of untold adventures.<br><br>Do you go to the quest board?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "quest_board_accepted",
+          "key_input": "A"
+        },
+        {
+          "state_name": "quest_board_ignored",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "quest_board_ignored": {
+      "text": "You ignore the quest board and go on about your day.",
+      "next_state": "thank_you_for_playing"
+    },
+    "quest_board_accepted": {
+      "text": "**Attention Adventurers!**<br>Our peaceful town is under the looming threat of a fearsome dragon residing in the nearby cave. We need a hero to confront and slay the menacing beast.<br><br>**Reward:** <br>A generous bounty of gold and a hero's welcome in our town.,<br><br>Do you accept this quest?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "quest_accepted",
+          "key_input": "A"
+        },
+        {
+          "state_name": "quest_declined",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "quest_declined": {
+      "text": "You decline the quest and go on about your day.",
+      "next_state": "thank_you_for_playing"
+    },
+    "quest_accepted": {
+      "text": "Quest accepted. Do you get supplies at the near by town?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "go_to_town",
+          "key_input": "A"
+        },
+        {
+          "state_name": "skip_town",
+          "key_input": "B"
+        }
+      ]
+    },
+    "go_to_town": {
+      "text": "You recieve rations, a bed roll, and rope for your quest<br><br>Leave town and enter the forest?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "leave_town",
+          "key_input": "A"
+        },
+        {
+          "state_name": "stay_in_town",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "stay_in_town": {
+      "text": "You get black out drunk at the inn and robbed of your belongings.",
+      "next_state": "thank you for playing"
+    },
+    "leave_town": {
+      "text": "you walk for some time and approach the forest. Do you enter?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "enter_forest",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_enter_forest",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "dont_enter_forest": {
+      "text": "You never enter the forest, and go on about your day.",
+      "next_state": "thank you for playing"
+    },
+    "enter_forest": {
+      "text": "You find a man tied to a tree. Do you free him?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "free_man",
+          "key_input": "A"
+        },
+        {
+          "state_name": "leave_man",
+          "key_input": "B"
+        }
+      ]
+    },"free_man": {
+      "text": "You free him and he joins your adventuring party.<br> A hungry wolf blocks the path <br> Do you fight it?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "fight_wolf_with_friend",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_fight_wolf",
+          "key_input": "A"
+        }
+      ]
+    },
+    "fight_wolf_with_friend": {
+      "text": "The hungry wolf lunges at you. sacrafice your companion? ?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "kill_partner",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_kill_partner",
+          "key_input": "B"
+        }
+      ]
+    },
+    "dont_kill_partner": {
+      "text": "The wolf wounds your arm but you and your companion survive the fight and slay the wolf. <br>After a long walk you reach the cave. Do you enter? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "enter_cave",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_enter_cave",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "dont_enter_cave": {
+      "text": "You and your new companion decicde its not worth it and live long happy lives",
+      "next_state": "thank_you_for_playing"
+    },
+    "enter_cave": {
+      "text": "You enter the cave. description of it. Go deeper?? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "deeper_cave",
+          "key_input": "A"
+        },
+        {
+          "state_name": "leave_cave",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "leave_cave": {
+      "text": "You leave the cave and return to town. You are called a coward and are humiliated for not finishing your quest.",
+      "next_state": "thank_you_for_playing"
+    },
+    "deeper_cave": {
+      "text": "you enter the dragons lair. Slay the dragon? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "slay_dragon_with_friend",
+          "key_input": "A",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        },
+        {
+          "state_name": "spare_the_dragon_with_friend",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "spare_the_dragon_with_friend": {
+      "text": "You make a deal with the dragon to bring food and not bother the village any longer. You take a tooth and some scales as evidence slaying teh dragon and you and your companion are regraded as heros. <br>next = NEXT",
+      "next_state": "thank_you_for_playing"
+    },
+    "slay_dragon_with_friend": {
+      "text": "You slay the dragon, your companion died. <br>next = NEXT",
+      "show_button": "next",
+      "hide_button": "a,b",
+      "next_state": "thank_you_for_playing"
+    },
+    "dont_fight_wolf": {
+      "text": "The hungry wolf stares at you, try to tame the beast, or attack with your companions help? ?<br>A = Tame Wolf B = ATTACK",
+      "next_state": [
+        {
+          "state_name": "tame_wolf",
+          "key_input": "A"
+        },
+        {
+          "state_name": "fight_wolf_with_friend",
+          "key_input": "B"
+        }
+      ]
+    },"tame_wolf": {
+      "text": "The wolf eageraly eats its meal, it graciously accompanies your party. <br>After a long walk you reach the cave. Do you enter? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "enter_cave_with_party",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_enter_cave_v2",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "dont_enter_cave_v2": {
+      "text": "You and your new party decicde to abandone the quest and live long happy lives.",
+      "next_state": "thank_you_for_playing"
+    },
+    "enter_cave_with_party": {
+      "text": "You enter the cave. description of it. Go deeper?? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "deeper_cave_with_party",
+          "key_input": "A"
+        },
+        {
+          "state_name": "leave_cave",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "deeper_cave_with_party": {
+      "text": "you enter the dragons lair. Slay the dragon? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "slay_dragon_with_party",
+          "key_input": "A",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        },
+        {
+          "state_name": "spare_the_dragon_with_party",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "spare_the_dragon_with_party": {
+      "text": "You make a deal with the dragon to bring food and not bother the village any longer. You take a tooth and some scales as evidence slaying teh dragon and you and your companion are regraded as heros. <br>next = NEXT",
+      "next_state": "thank_you_for_playing"
+    },
+    "slay_dragon_with_party": {
+      "text": "youre party fights tooth and nail eventually bringing the great beast to its final breath you are victorius and complete your quest. <br>next = NEXT",
+      "show_button": "next",
+      "hide_button": "a,b",
+      "next_state": "thank_you_for_playing"
+    },
+    "kill_partner": {
+      "text": "You push your partner in front of you, the wolf vicously rips out his throat as you finish the beast off from behind. You leave both the corpses on the path. <br>After a long walk you reach the cave. Do you enter? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "enter_cave_alone",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_enter_cave_alone",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "dont_enter_cave_alone": {
+      "text": "You decicde this quest is not worth your life and go on about your life.",
+      "next_state": "thank_you_for_playing"
+    },
+    "enter_cave_alone": {
+      "text": "You enter the cave. description of it. Go deeper?? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "deeper_cave_alone",
+          "key_input": "A"
+        },
+        {
+          "state_name": "leave_cave",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "deeper_cave_alone": {
+      "text": "you enter the dragons lair. Slay the dragon? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "slay_dragon_alone",
+          "key_input": "A",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        },
+        {
+          "state_name": "spare_the_dragon_alone",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "spare_the_dragon_alone": {
+      "text": "You make a deal with the dragon to bring food and not bother the village any longer. You take a tooth and some scales as evidence slaying teh dragon and you and your companion are regraded as heros. <br>next = NEXT",
+      "next_state": "thank_you_for_playing"
+    },
+    "slay_dragon_alone": {
+      "text": "Your pride is your downfall, the dragon over powers you easily and quickly. This was your last quest and have died. <br>next = NEXT",
+      "show_button": "next",
+      "hide_button": "a,b",
+      "next_state": "thank_you_for_playing"
+    },
+    "leave_man": {
+      "text": "He curses at you as you leave him to be eatin by wolves and crows. <br>A hungry wolf blocks the path. Do you fight it?<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "fight_wolf_alone",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_fight_wolf_alone",
+          "key_input": "B"
+        }
+      ]
+    },
+    "fight_wolf_alone": {
+      "text": "you are gruesomely killed by the wolf and become its dinner.",
+      "next_state": "thank_you_for_playing"
+    },
+    "dont_fight_wolf_alone": {
+      "text": "The hungry wolf stares at you, try to tame the beast, or attack with your companions help? ?<br>A = Tame Wolf B = ATTACK",
+      "next_state": [
+        {
+          "state_name": "tame_wolf_alone",
+          "key_input": "A"
+        },
+        {
+          "state_name": "fight_wolf_alone",
+          "key_input": "B"
+        }
+      ]
+    },"tame_wolf_alone": {
+      "text": "The wolf eageraly eats its meal, it graciously accompanies your party. <br>After a long walk you reach the cave. Do you enter? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "enter_cave_with_wolf",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_enter_cave_v3",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "dont_enter_cave_v3": {
+      "text": "You decicde this quest is not worth your life and go on about your life with your new wolf companion.",
+      "next_state": "thank_you_for_playing"
+    },
+    "enter_cave_with_wolf": {
+      "text": "You enter the cave. description of it. Go deeper?? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "deeper_cave_with_wolf",
+          "key_input": "A"
+        },
+        {
+          "state_name": "leave_cave",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "deeper_cave_with_wolf": {
+      "text": "you enter the dragons lair. Slay the dragon? <br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "slay_dragon_with_wolf",
+          "key_input": "A",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        },
+        {
+          "state_name": "spare_the_dragonwith_wolf",
+          "key_input": "B",
+          "show_button": "next",
+          "hide_button": ["a","b"]
+        }
+      ]
+    },
+    "spare_the_dragon_with_wolf": {
+      "text": "You make a deal with the dragon to bring food and not bother the village any longer. You become storied as a folktale of the 'Mighty Beast Tamer' deep in the forest. <br>next = NEXT",
+      "next_state": "thank_you_for_playing"
+    },
+    "slay_dragon_with_wolf": {
+      "text": "You and your wolf tooth and nail, and bring down the mighty dragon...But at the cost of your pet. You complete your quest but lost your loyal companion. <br>next = NEXT",
+      "show_button": "next",
+      "hide_button": "a,b",
+      "next_state": "thank_you_for_playing"
+    },
+    "skip_town": {
+      "text": "You decide to not visit the town. Enter the forest?,<br>A = YES B = NO",
+      "next_state": [
+        {
+          "state_name": "enter_forest",
+          "key_input": "A"
+        },
+        {
+          "state_name": "dont_enter_forest",
+          "key_input": "B"
+        }
+      ]
+    },
+    "thank_you_for_playing": {
+      "text": "Thank you for playing 'GIVE ME A QUEST'",
+      "next_state" : "restart",
+      "delay": 10000
+    },
+    "restart": {
+      "restart_cmd" : true 
+    }
+  }
+} 
